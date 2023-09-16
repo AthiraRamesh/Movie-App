@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
         title: const modifiedText(
           text: "Flutter Movie App ❤️",
           color: Colors.white,
-          size: 20,
+          size: 15,
         ),
       ),
       body: ListView(

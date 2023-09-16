@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/description.dart';
 import 'package:movie_app/utils/text.dart';
 
 class TV extends StatelessWidget {
@@ -27,7 +28,22 @@ class TV extends StatelessWidget {
                 itemCount: tv.length,
                 itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Description(
+                                    name: tv[index]['original_name'],
+                                    description: tv[index]['overview'],
+                                    bannerurl:
+                                        'https://image.tmdb.org/t/p/w500' +
+                                            tv[index]['backdrop_path'],
+                                    posterurl:
+                                        'https://image.tmdb.org/t/p/w500' +
+                                            tv[index]['poster_path'],
+                                    vote: tv[index]['vote_average'].toString(),
+                                  )));
+                    },
                     child: Container(
                       padding: EdgeInsets.all(5),
                       width: 250,
