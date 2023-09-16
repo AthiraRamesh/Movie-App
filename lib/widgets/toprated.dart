@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/utils/text.dart';
 
-class TrendingMovies extends StatelessWidget {
-  final List trending;
-  const TrendingMovies({super.key, required this.trending});
+class TopRated extends StatelessWidget {
+  final List toprated;
+  const TopRated({super.key, required this.toprated});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class TrendingMovies extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const modifiedText(
-            text: "Trending Movies",
+            text: "Top Rated Movies",
             size: 20,
             color: Colors.white,
           ),
@@ -21,10 +21,10 @@ class TrendingMovies extends StatelessWidget {
             height: 10,
           ),
           Container(
-            height: 300,
+            height: 270,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: trending.length,
+                itemCount: toprated.length,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {},
@@ -39,12 +39,15 @@ class TrendingMovies extends StatelessWidget {
                                 image: DecorationImage(
                                     image: NetworkImage(
                                         'https://image.tmdb.org/t/p/w500' +
-                                            trending[index]['poster_path']))),
+                                            toprated[index]['poster_path']))),
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                           Container(
                             child: modifiedText(
-                                text: trending[index]['title'] != null
-                                    ? trending[index]['title']
+                                text: toprated[index]['title'] != null
+                                    ? toprated[index]['title']
                                     : 'loading',
                                 color: Colors.white,
                                 size: 15),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/utils/text.dart';
 
-class TrendingMovies extends StatelessWidget {
-  final List trending;
-  const TrendingMovies({super.key, required this.trending});
+class TV extends StatelessWidget {
+  final List tv;
+  const TV({super.key, required this.tv});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class TrendingMovies extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const modifiedText(
-            text: "Trending Movies",
+            text: " Popular TV Shows",
             size: 20,
             color: Colors.white,
           ),
@@ -21,30 +21,37 @@ class TrendingMovies extends StatelessWidget {
             height: 10,
           ),
           Container(
-            height: 300,
+            height: 230,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: trending.length,
+                itemCount: tv.length,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {},
                     child: Container(
                       padding: EdgeInsets.all(5),
-                      width: 140,
+                      width: 250,
                       child: Column(
                         children: [
                           Container(
-                            height: 200,
+                            width: 250,
+                            height: 140,
                             decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
                                     image: NetworkImage(
-                                        'https://image.tmdb.org/t/p/w500' +
-                                            trending[index]['poster_path']))),
+                                      'https://image.tmdb.org/t/p/w500' +
+                                          tv[index]['backdrop_path'],
+                                    ),
+                                    fit: BoxFit.cover)),
+                          ),
+                          SizedBox(
+                            height: 20,
                           ),
                           Container(
                             child: modifiedText(
-                                text: trending[index]['title'] != null
-                                    ? trending[index]['title']
+                                text: tv[index]['original_name'] != null
+                                    ? tv[index]['original_name']
                                     : 'loading',
                                 color: Colors.white,
                                 size: 15),
